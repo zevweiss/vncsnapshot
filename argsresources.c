@@ -339,3 +339,10 @@ static int setFlag(int *argc, char ***argv, void *arg, int value)
     *((Bool *)arg) = value;
     return 1;
 }
+
+void showArgs(int argc, char** argv) {
+  int i;
+  for (i=0; i<argc; i++) {
+    fprintf(stderr, "\tARGV[%d]=%s\n", i, argv[i]);
+  }
+}

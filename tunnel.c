@@ -106,6 +106,8 @@ createTunnel(int *pargc, char **argv, int tunnelArgIndex)
   if (!runCommand(cmd))
     return False;
 
+  fprintf(stderr, "Successfully runCommand(%s)\n", cmd);
+
   return True;
 }
 
@@ -115,11 +117,16 @@ processTunnelArgs(char **remoteHost, int *remotePort, int localPort,
 {
   char *pdisplay;
 
+  fprintf(stderr, "processTunnelArgs:");
+  showArgs(*pargc, argv);
+
   if (tunnelArgIndex >= *pargc - 1)
     usage();
 
-  pdisplay = strchr(argv[*pargc - 1], ':');
-  if (pdisplay == NULL || pdisplay == argv[*pargc - 1])
+  fprintf(stderr, "tAI=%d: %s\n", tunnelArgIndex, argv[tunnelArgIndex]);
+  fprintf(stderr, "tAI+1: %s\n", argv[tunnelArgIndex+1]);
+  pdisplay = strchr(argv[tunnelArgIndex + 1], ':');
+  if (pdisplay == NULL || pdisplay == argv[tunnelArgIndex + 1])
     usage();
 
   *pdisplay++ = '\0';
@@ -130,12 +137,15 @@ processTunnelArgs(char **remoteHost, int *remotePort, int localPort,
   if (*remotePort < 100)
     *remotePort += SERVER_PORT_OFFSET;
 
-  sprintf(lastArgv, "localhost:%d", localPort);
+  sprintf(lastArgv, "localhost::%d", localPort); /* see argsresources.c, GetArgsAndResources, Two colons comment */
 
-  *remoteHost = argv[*pargc - 1];
-  argv[*pargc - 1] = lastArgv;
+  *remoteHost = argv[tunnelArgIndex + 1];
+
+  argv[tunnelArgIndex + 1] = lastArgv;
 
   removeArgs(pargc, argv, tunnelArgIndex, 1);
+  showArgs(*pargc, argv);
+
 }
 
 static void
