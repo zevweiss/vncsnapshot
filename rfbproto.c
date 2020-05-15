@@ -605,11 +605,11 @@ HandleRFBServerMessage()
 	if (!ReadFromRFBServer((char *)&cr, sz_rfbCopyRect))
 	  return False;
 
-          if (!BufferWritten()) {
-            /* Ignore attempts to do copy-rect when we have nothing to
-             * copy from.
-             */
-            break;
+        if (!BufferWritten()) {
+          /* Ignore attempts to do copy-rect when we have nothing to
+           * copy from.
+           */
+          break;
         }
 
  	cr.srcX = Swap16IfLE(cr.srcX);
