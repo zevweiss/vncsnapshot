@@ -20,7 +20,6 @@
 /*
  * argsresources.c - deal with command-line args and resources.
  */
-static const char *ID = "$Id: argsresources.c,v 1.8 2006/04/07 03:22:39 grmcdorman Exp $";
 
 #include "vncsnapshot.h"
 #include "version.h"

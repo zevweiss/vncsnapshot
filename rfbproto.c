@@ -23,7 +23,6 @@
 /*
  * rfbproto.c - functions to deal with client side of RFB protocol.
  */
-static const char *ID = "$Id: rfbproto.c,v 1.7 2006/04/07 03:22:39 grmcdorman Exp $";
 
 #ifdef WIN32
 #include "vncauth.h"
