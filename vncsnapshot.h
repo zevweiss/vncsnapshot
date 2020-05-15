@@ -123,7 +123,7 @@ extern int vncServerPort;
 extern Bool listenSpecified;
 extern int listenPort, flashPort;
 
-
+extern void showArgs(int argc, char** argv);
 extern void removeArgs(int *argc, char** argv, int idx, int nargs);
 extern void usage(void);
 extern void GetArgsAndResources(int argc, char **argv);
