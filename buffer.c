@@ -36,7 +36,7 @@ static struct {
     int set;
 } firstpixel = { .set = 0, };
 
-static char * rawBuffer = NULL;
+static unsigned char * rawBuffer = NULL;
 static char   bufferBlank = 1;
 static char   bufferWritten = 0;
 
@@ -340,7 +340,7 @@ ShrinkBuffer(long x, long y, long req_width, long req_height)
     int start;
     int stride;
     int row, col;
-    char *cp;
+    unsigned char *cp;
 
 
     /*
